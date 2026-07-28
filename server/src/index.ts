@@ -6,7 +6,7 @@ import todoRoutes from "./routes/todos";
 const app = express();
 const PORT = process.env.PORT || 3001;
 const MONGO_URI = process.env.MONGO_URI;
-const unused = "this will fail lint";
+
 app.use(cors());
 app.use(express.json());
 

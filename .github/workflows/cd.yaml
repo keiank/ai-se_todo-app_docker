@@ -24,10 +24,11 @@ jobs:
 
       - name: Open SSH for runner
         run: |
-          aws ec2 authorize-security-group-ingress \
-            --group-id ${{ secrets.SG_ID }} \
-            --procotol tcp --port 22 \
-            --cidr ${{ steps.ip.outputs.ip }}/32
+         aws ec2 authorize-security-group-ingress \
+           --group-id ${{ secrets.SG_ID }} \
+           --protocol tcp \
+           --port 22 \
+           --cidr ${{ steps.ip.outputs.ip }}/32
 
       - name: Deploy
         uses: appleboy/ssh-action@v1.0.3
@@ -46,6 +47,6 @@ jobs:
         run: |
           aws ec2 revoke-security-group-ingress \
             --group-id ${{ secrets.SG_ID }} \
-            --protocol tcp --port 22 \
+            --protocol tcp \
+            --port 22 \
             --cidr ${{ steps.ip.outputs.ip }}/32
-            
